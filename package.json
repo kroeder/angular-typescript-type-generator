@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "generate:types": "tsc ./_type-generator/index.ts && node ./_type-generator/index.js"
   },
   "private": true,
   "dependencies": {
