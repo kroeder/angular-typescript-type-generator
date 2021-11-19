@@ -21,6 +21,11 @@ export class AppComponent {
   _ev = new BehaviorSubject(null);
   title = 'angular-type-generator-poc';
 
+  /**
+   * I am the description for propertyWithDescription
+   */
+  propertyWithDescription = 'I should have a description';
+
   @Input() stringInput: string | undefined;
   @Input() numberInput: number | undefined;
   @Input() objectInput?: User;
@@ -29,5 +34,7 @@ export class AppComponent {
 
   @Output() userChanged = new EventEmitter<User>();
   @Output() somethingHappened = this._ev.asObservable();
+
+
 
 }
