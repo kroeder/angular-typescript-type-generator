@@ -1,4 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+export interface User {
+  name: string;
+  age: number;
+  address: {
+    city: string;
+    zip: string;
+    country: string;
+  }
+}
 
 @Component({
   selector: 'app-root',
@@ -6,5 +17,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  _ev = new BehaviorSubject(null);
   title = 'angular-type-generator-poc';
+
+  @Input() stringInput: string | undefined;
+  @Input() numberInput: number | undefined;
+  @Input() objectInput?: User;
+  @Input() listOfObjectsInput: Array<{ a: string, b: number, c: boolean }> = [];
+  @Input() stringInputWithDefault = 'Hey!';
+
+  @Output() userChanged = new EventEmitter<User>();
+  @Output() somethingHappened = this._ev.asObservable();
+
 }
